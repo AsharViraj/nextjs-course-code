@@ -1,5 +1,24 @@
+import Link from "next/link";
+
 function ClientsPage() {
-    return <div>The Clients Page</div>
+    const clients = [
+        { id: 'viraj', name: 'Viraj' },
+        { id: 'ashar', name: 'Ashar' },
+        { id: 'bhatia', name: 'Bhatia' },
+    ]
+    return <div>
+        <h1>The Clients Page</h1>
+        <ul>
+            {/* {clients.map(client => <li key={client.id}><Link href={`/clients/${client.id}`}>{client.name}</Link></li>)} */}
+            {clients.map(client =>
+                <li key={client.id}>
+                    <Link href={{ pathname: 'clients/[id]', query: { id: client.id } }}>
+                        {client.name}
+                    </Link>
+                </li>
+            )}
+        </ul>
+    </div>
 }
 
 export default ClientsPage;
